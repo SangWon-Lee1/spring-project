@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,5 +27,12 @@ public class CommentResponseDTO {
         body = comment.getBody();
         createdAt = comment.getCreatedAt().format(DateFormatUtil.formatter);
         article = new ArticleResponse(comment.getArticle());
+    }
+
+    public CommentResponseDTO(Long commentId, Long articleId, String body, LocalDateTime createdAt) {
+        this.commentId = commentId;
+        this.articleId = articleId;
+        this.body = body;
+        this.createdAt = String.valueOf(createdAt);
     }
 }

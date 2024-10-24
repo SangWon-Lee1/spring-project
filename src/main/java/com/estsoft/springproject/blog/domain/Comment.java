@@ -1,5 +1,6 @@
 package com.estsoft.springproject.blog.domain;
 
+import com.estsoft.springproject.blog.domain.DTO.CommentResponseDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,5 +37,9 @@ public class Comment {
 
     public void update(String body) {
         this.body = body;
+    }
+
+    public CommentResponseDTO convert() {
+        return new CommentResponseDTO(id, article.getId(), body, createdAt);
     }
 }
