@@ -27,8 +27,8 @@ public class ArticleResponse {
         id = article.getId();
         title = article.getTitle();
         content = article.getContent();
-        createdAt = article.getCreatedAt().format(DateFormatUtil.formatter);
-        updatedAt = article.getUpdatedAt().format(DateFormatUtil.formatter);
+        createdAt = article.getCreatedAt() != null ? article.getCreatedAt().format(DateFormatUtil.formatter) : "";
+        updatedAt = article.getUpdatedAt() != null ? article.getUpdatedAt().format(DateFormatUtil.formatter) : "";
     }
 
     public ArticleResponse(Long id, String title, String content) {

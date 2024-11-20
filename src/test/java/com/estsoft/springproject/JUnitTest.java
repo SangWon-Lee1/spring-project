@@ -1,7 +1,8 @@
 package com.estsoft.springproject;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JUnitTest {
     @Test
@@ -10,17 +11,14 @@ public class JUnitTest {
         int a = 1;
         int b = 2;
 
-        // when : 검증하고 싶은 메소드 호출
+        // when: 검증하고싶은 메소드(코드) 호출
         int sum = a + b;
 
-        // then : when절에서 실행한 결과 검증
-        // JUnit
-//        Assertions.assertEquals(3, sum);
-        // 위랑 같지만 다른 방법
-        // assertJ
-        Assertions.assertThat(sum).isEqualTo(3);
+        // then : when절 실행한 결과 검증
+//        Assertions.assertEquals(3, sum);    // JUnit 사용
+        assertThat(sum).isEqualTo(3); // AssertJ 사용
 
-        Assertions.assertThat(sum).isEven();
-        Assertions.assertThat(sum).isOdd();
+//        Assertions.assertThat(sum).isEven();  // JUnit 사용
+        assertThat(sum).isOdd();                // AssertJ 사용
     }
 }

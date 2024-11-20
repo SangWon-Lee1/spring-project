@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ExternalApiController {
@@ -62,13 +64,7 @@ public class ExternalApiController {
         String url = "https://jsonplaceholder.typicode.com/posts";
         ResponseEntity<List<Content>> resultList = restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
 
-        List<Content> contents;
-        if (resultList.getBody() != null) {
-            contents = resultList.getBody();
-        } else {
-            contents = new ArrayList<>();
-        }
-
+        List<Content> contents = Optional.ofNullable(resultList.getBody()).orElse(Collections.emptyList());
         List<ArticleResponse> requests = contents.stream()
                 .map(content -> blogService.saveArticle(new AddArticleRequest(content.getTitle(), content.getBody())).convert())
                 .toList();
