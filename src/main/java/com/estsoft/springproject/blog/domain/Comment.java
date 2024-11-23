@@ -33,6 +33,7 @@ public class Comment {
     public Comment(String body, Article article) {
         this.body = body;
         this.article = article;
+        this.createdAt = LocalDateTime.now();
     }
 
     public void update(String body) {

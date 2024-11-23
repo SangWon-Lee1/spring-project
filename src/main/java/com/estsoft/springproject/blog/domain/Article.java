@@ -39,6 +39,8 @@ public class Article {
     public Article(String title, String content) {
         this.title = title;
         this.content = content;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public ArticleResponse convert() {
